@@ -1,0 +1,25 @@
+version: '3'
+services:
+  backend:
+    depends_on:
+      - mysql
+    build: ./backend/
+    ports:
+     - "8000:8000"
+    volumes:
+     - ./backend/app/:/opt/app
+  mysql:
+    build: ./mysql/
+    ports:
+     - "3306:3306"
+    volumes:
+     - ./mysql/data/:/var/lib/mysql
+     - ./mysql/conf/:/conf
+  ui:
+    depends_on:
+      - backend
+    build: ./ui/
+    ports:
+     - "80:4200"
+    volumes:
+     - ./ui/src/:/app/my-project/src

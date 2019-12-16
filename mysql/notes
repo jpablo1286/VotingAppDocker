@@ -1,0 +1,3 @@
+default $ohM4H20cD@g9AsahowaBaJIMEM
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'newpass';
+GRANT ALL PRIVILEGES ON *.* TO 'newuser'@'%' IDENTIFIED BY 'newpass';
