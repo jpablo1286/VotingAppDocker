@@ -1,23 +1,28 @@
 version: '3'
 services:
-  backend:
+  voting-back:
+    container_name: "voting-back"
     depends_on:
-      - mysql
+      - voting-db
     build: ./backend/
     ports:
      - "8000:8000"
     volumes:
      - ./backend/app/:/opt/app
-  mysql:
+    links:
+     - voting-db
+  voting-db:
+    container_name: "voting-db"
     build: ./mysql/
     ports:
      - "3306:3306"
     volumes:
      - ./mysql/data/:/var/lib/mysql
      - ./mysql/conf/:/conf
-  ui:
+  voting-ui:
+    container_name: "voting-ui"
     depends_on:
-      - backend
+      - voting-back
     build: ./ui/
     ports:
      - "80:4200"

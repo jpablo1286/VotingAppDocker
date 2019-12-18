@@ -22,4 +22,6 @@ RUN git config --global user.name "Automation"
 
 #CMD /opt/app/bin/python /opt/app/simplepbx/manage.py runserver 0.0.0.0:8000
 WORKDIR /opt/app
-CMD rm -rf VotingAppBackend && git clone https://github.com/jpablo1286/VotingAppBackend.git && tail -f /dev/null
+COPY start.sh /opt/start.sh
+RUN chmod 755 /opt/start.sh
+CMD /opt/start.sh
