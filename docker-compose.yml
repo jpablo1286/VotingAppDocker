@@ -23,8 +23,10 @@ services:
     container_name: "voting-ui"
     depends_on:
       - voting-back
+    links:
+     - voting-back  
     build: ./ui/
     ports:
-     - "80:4200"
+     - "4200:4200"
     volumes:
      - ./ui/src/:/app/my-project/src

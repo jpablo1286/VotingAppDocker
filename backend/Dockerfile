@@ -18,9 +18,8 @@ RUN bin/pip install django-storages
 RUN git config --global user.email "me@juanrivera.org"
 RUN git config --global user.name "Automation"
 
-#RUN git clone https://github.com/jpablo1286/VotingAppBackend.git
-
-#CMD /opt/app/bin/python /opt/app/simplepbx/manage.py runserver 0.0.0.0:8000
+RUN apt-get update
+RUN apt-get install -y mysql-client
 WORKDIR /opt/app
 COPY start.sh /opt/start.sh
 RUN chmod 755 /opt/start.sh

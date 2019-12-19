@@ -161,6 +161,7 @@ EOF
 		done
 
 		# When using a local socket, mysqladmin shutdown will only complete when the server is actually down
+		mysql -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE < /conf/votingDB.sql
 		mysqladmin --defaults-extra-file="$PASSFILE" shutdown -uroot --socket="$SOCKET"
 		rm -f "$PASSFILE"
 		unset PASSFILE
