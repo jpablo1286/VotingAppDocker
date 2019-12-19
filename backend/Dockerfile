@@ -17,7 +17,8 @@ RUN bin/pip install django-storages
 
 RUN git config --global user.email "me@juanrivera.org"
 RUN git config --global user.name "Automation"
-
+RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.10-1_all.deb
+RUN dpkg -i mysql-apt-config*
 RUN apt-get update
 RUN apt-get install -y mysql-client
 WORKDIR /opt/app
