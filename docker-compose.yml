@@ -24,9 +24,9 @@ services:
     depends_on:
       - voting-back
     links:
-     - voting-back  
+     - voting-back
     build: ./ui/
     ports:
-     - "4200:4200"
+     - "80:80"
     volumes:
      - ./ui/src/:/app/my-project/src

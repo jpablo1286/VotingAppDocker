@@ -12,9 +12,16 @@ WORKDIR /app/my-project/
 RUN npm install --save @angular/material @angular/cdk @angular/animations @angular/compiler-cli
 RUN npm install --save hammerjs
 RUN npm install --save @angular/flex-layout@latest
+RUN apt-get -y install nginx
+COPY config/default /etc/nginx/sites-enabled/default
+COPY config/openssl.cnf /etc/ssl/openssl.cnf
+RUN openssl req -new -x509 -nodes -out /etc/ssl/server.crt -keyout /etc/ssl/server.key
 RUN rm -rf src
 COPY start.sh /app/start.sh
 RUN chmod 755 /app/start.sh
-EXPOSE 4200
+EXPOSE 80
+RUN rm -rf /app/my-project/src/
+RUN git clone https://github.com/jpablo1286/VotingAppUI.git /app/my-project/src
+RUN ng build --prod
 CMD /app/start.sh
 #CMD ng serve --host 0.0.0.0 --disable-host-check

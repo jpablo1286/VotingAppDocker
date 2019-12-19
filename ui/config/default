@@ -1,0 +1,8 @@
+server {
+    listen          80;
+    server_name     votingapp.juanrivera.org;
+    root /app/my-project/dist/my-project;
+    location / {
+      try_files $uri $uri/ /index.html;
+    }
+}
