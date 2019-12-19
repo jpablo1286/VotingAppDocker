@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.7-stretch
 WORKDIR /opt/
 RUN pip install virtualenv
 RUN virtualenv -p python3 .
